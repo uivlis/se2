@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: org.robolectric:robolectric-resources:3.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.robolectric/robolectric-resources/jars/robolectric-resources-3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.robolectric/robolectric-resources/srcs/robolectric-resources-3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

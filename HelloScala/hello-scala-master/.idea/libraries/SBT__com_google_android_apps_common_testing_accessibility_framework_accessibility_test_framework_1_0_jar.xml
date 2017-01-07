@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:1.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.android.apps.common.testing.accessibility.framework/accessibility-test-framework/jars/accessibility-test-framework-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.google.android.apps.common.testing.accessibility.framework/accessibility-test-framework/srcs/accessibility-test-framework-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.almworks.sqlite4java:sqlite4java:0.282:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.almworks.sqlite4java/sqlite4java/jars/sqlite4java-0.282.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.almworks.sqlite4java/sqlite4java/srcs/sqlite4java-0.282-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
