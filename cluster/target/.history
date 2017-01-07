@@ -1,0 +1,291 @@
+run
+exit
+run
+reload
+compile
+console
+reload
+compile
+console
+reload
+exit
+reload
+exit
+reload
+dist
+exit
+compile
+run
+dist
+inspect classPath
+inspect full-classPath
+inspect full-classpath
+show full-classPath
+show full-classpath
+reload
+show full-classpath
+reload
+show full-classpath
+exit
+show compile:fullClasspath
+show compile:classpathConfiguartion
+show compile:classpathConfiguration
+compile
+exit
+reload
+exit
+compile
+~compile
+~ compile
+run
+reload
+run
+~ compile
+run
+reload
+run
+reload
+run
+reload
+run
+compile
+run
+reload
+run
+compile
+dist
+console
+compile
+dist
+reload
+compile
+~ compile
+compile
+~ compile
+console
+~ compile
+compile -deprecation
+compile deprecation
+compile
+console
+compile
+console
+compile
+console
+compile
+reload
+compile
+console
+compile
+~ compile
+compile
+compile Camera
+console
+~ compile
+compile
+~ compile
+console
+compile
+~ compile
+console
+~ compile
+console
+rebuild
+update
+exit
+console
+exit
+console
+~ compile
+console
+~ compile
+console
+compile
+exit
+compile
+exit
+compile
+exit
+compile
+exit
+compile
+exit
+compile
+exit
+compile
+exit
+compile
+last *:sourceGenerators
+exi
+exit
+compile
+exit
+compile
+last
+exit
+compile
+slick
+exit
+show slick
+show name
+console
+show tasks
+show taskDependencies
+show taskDependency.
+show taskDependency
+allDependencies
+show allDependencies
+tasks
+exit
+slick
+compile
+slick
+last
+show dependencyClasspath
+show fullClasspath
+(dependecyClasspath in compile).value.files
+dependecyClasspath.value.files
+exit
+slick
+sbt
+exit
+goSlick
+exit
+compile
+goSlick
+exit
+compile
+goSlick
+exit
+compile
+goSlick
+last
+goSlick
+exit
+goSlick
+compile
+~ compile
+compileClasspath
+show fullClassptah in Compile
+fullClassptah in Compile
+show fullClasspath
+compileIncremental
+~ compile
+exit
+compile
+exit
+compile
+exit
+~ compile
+console
+compile
+~ compile
+console
+~ compile
+console
+exit
+console
+exit
+console
+compile:unmanagedSOurceDirectories
+compile:unmanagedSourceDirectories
+goSlick
+compile
+goSlick
+exit
+console
+goSlick
+compile
+exit
+console
+goSlick
+exit
+console
+goSlick
+exit
+console
+goSlick
+exit
+console
+goSlick
+compile
+exit
+compile
+exit
+compile
+javaHome
+exit
+compile
+exit
+compile
+exit
+compile
+exit
+compile
+console
+goSlick
+console
+exit
+compile
+exit
+compile
+exit
+compile
+console
+exit
+compile
+console
+goSlick
+exit
+compile
+goSlick
+exit
+goSlick
+compile
+console
+compile
+console
+compile
+console
+compile
+console
+compile
+console
+~ compile
+console
+~ compile
+goSlick
+~ compile
+console
+~ compile
+console
+~ compile
+console
+~compile
+console
+~ compile
+console
+~ compile
+goSlick
+~ compile
+console
+goSlick
+~ compile
+goSlick
+~ compile
+exit
+~ compile
+goSlick
+~ compile
+compile
+run
+test
+show fullClasspath
+goSlick
+~ compile
+console
+~ compile
+exit
+~ compile
+exit
+~ compile
