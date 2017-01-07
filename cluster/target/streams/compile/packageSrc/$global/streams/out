@@ -1,0 +1,15 @@
+[0m[[0minfo[0m] [0mPackaging D:\UT\3\SE\cluster\target\scala-2.12\cluster_2.12-0.0.0-sources.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	DispMobil.scala[0m
+[0m[[0mdebug[0m] [0m	  D:\UT\3\SE\cluster\src\main\scala\DispMobil.scala[0m
+[0m[[0mdebug[0m] [0m	Main.scala[0m
+[0m[[0mdebug[0m] [0m	  D:\UT\3\SE\cluster\src\main\scala\Main.scala[0m
+[0m[[0mdebug[0m] [0m	Server.scala[0m
+[0m[[0mdebug[0m] [0m	  D:\UT\3\SE\cluster\src\main\scala\Server.scala[0m
+[0m[[0mdebug[0m] [0m	ServerApp.scala[0m
+[0m[[0mdebug[0m] [0m	  D:\UT\3\SE\cluster\src\main\scala\ServerApp.scala[0m
+[0m[[0mdebug[0m] [0m	Messages.scala[0m
+[0m[[0mdebug[0m] [0m	  D:\UT\3\SE\cluster\src\main\scala\Messages.scala[0m
+[0m[[0mdebug[0m] [0m	application.conf[0m
+[0m[[0mdebug[0m] [0m	  D:\UT\3\SE\cluster\src\main\resources\application.conf[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m
