@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="SBT 1" modules="hello-scala-master">
+      <option name="deprecationWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-bootclasspath" />
+        <parameter value="C:\Users\MIGUEL\.android\sbt\sdk\platforms\android-24\android.jar" />
+        <parameter value="-javabootclasspath" />
+        <parameter value="C:\Users\MIGUEL\.android\sbt\sdk\platforms\android-24\android.jar" />
+      </parameters>
+    </profile>
+  </component>
+</project>
