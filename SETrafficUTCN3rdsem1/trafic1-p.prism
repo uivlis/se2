@@ -1,0 +1,146 @@
+mdp
+
+const int maxc = 24; // valoarea maxima a ceasului global
+const int maxlc = 10; // valoarea maxima a ceasului local
+
+const int tmed11 = 1; // timpul mediu necesar parcurgerii strazii S1 in intervalul 1
+const int tmed12 = 3; // timpul mediu necesar parcurgerii strazii S1 in intervalul 2
+const int tmed13 = 1; // timpul mediu necesar parcurgerii strazii S1 in intervalul 3
+
+const int tmed21 = 7; // timpul mediu necesar parcurgerii strazii S2 in intervalul 1
+const int tmed22 = 1; // timpul mediu necesar parcurgerii strazii S2 in intervalul 2
+const int tmed23 = 3; // timpul mediu necesar parcurgerii strazii S2 in intervalul 3
+
+const int tmed31 = 1; // timpul mediu necesar parcurgerii strazii S3 in intervalul 1
+const int tmed32 = 3; // timpul mediu necesar parcurgerii strazii S3 in intervalul 2
+const int tmed33 = 2; // timpul mediu necesar parcurgerii strazii S3 in intervalul 3
+
+//const int tmed31; // timpul mediu necesar parcurgerii strazii S3 in intervalul 1
+//const int tmed32; // timpul mediu necesar parcurgerii strazii S3 in intervalul 2
+//const int tmed33; // timpul mediu necesar parcurgerii strazii S3 in intervalul 3
+
+const int tmed41 = 2; // timpul mediu necesar parcurgerii strazii S4 in intervalul 1
+const int tmed42 = 3; // timpul mediu necesar parcurgerii strazii S4 in intervalul 2
+const int tmed43 = 2; // timpul mediu necesar parcurgerii strazii S4 in intervalul 3
+
+const int tmed51 = 1; // timpul mediu necesar parcurgerii strazii S5 in intervalul 1
+const int tmed52 = 2; // timpul mediu necesar parcurgerii strazii S5 in intervalul 2
+const int tmed53 = 3; // timpul mediu necesar parcurgerii strazii S5 in intervalul 3
+
+module Ceas 
+   c : [0..maxc] init 0;
+   [transfercontrol1] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfercontrol2] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfer2control] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfer5control] true -> (c'=(c+1>=maxc)?0:c+1);
+   [idle1] true -> (c'=(c+1>=maxc)?0:c+1);
+   [idle2] true -> (c'=(c+1>=maxc)?0:c+1);
+   [idle3] true -> (c'=(c+1>=maxc)?0:c+1);
+   [idle4] true -> (c'=(c+1>=maxc)?0:c+1);
+   [idle5] true -> (c'=(c+1>=maxc)?0:c+1);
+   [run1] true -> (c'=(c+1>=maxc)?0:c+1);
+   [run2] true -> (c'=(c+1>=maxc)?0:c+1);
+   [run3] true -> (c'=(c+1>=maxc)?0:c+1);
+   [run4] true -> (c'=(c+1>=maxc)?0:c+1);
+   [run5] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfer13] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfer35] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfer14] true -> (c'=(c+1>=maxc)?0:c+1);
+   [transfer45] true -> (c'=(c+1>=maxc)?0:c+1);
+endmodule
+
+const double p_alegere12;
+
+module Control // start si intrare spre S1 sau S2, iesire din S2 sau S5 si stop 
+   run : [0..2] init 0; // 0 = start, 1=run, 2=stop
+   choice : [0..2] init 0;
+   [] run=0 & choice=0 -> p_alegere12 : (choice'=1) + (1-p_alegere12):(choice'=2);
+   [transfercontrol1] run=0 & choice=1 -> (run'=1);
+   [transfercontrol2] run=0 & choice=2 -> (run'=1);
+   [transfer2control] run=1 -> (run'=2); 
+   [transfer5control] run=1 -> (run'=2);
+endmodule
+
+const double p_alegere34;
+
+module S1 // intrare din Control, iesire spre S3 sau S4
+   t1 : bool init false; 
+   s1 : bool init false; // false = idle, true = run
+   lc1 : [1..maxlc] init 1;
+   choice1 : [0..2] init 0;
+   [idle1] !s1 & c>=12 -> true;
+   [transfercontrol1] !s1 & c>=0 & c<4 -> (s1'=true) & (lc1'=tmed11);
+   [transfercontrol1] !s1 & c>=4 & c<8 -> (s1'=true) & (lc1'=tmed12);
+   [transfercontrol1] !s1 & c>=8 & c<12 -> (s1'=true) & (lc1'=tmed13);
+   [run1] s1 & !s2 & !s3 & !s4 & !s5 & lc1>1 & c<12 -> (lc1'=lc1-1);
+   [] s1 & !s2 & !s3 & !s4 & !s5 & lc1=1 & c<12 & choice1=0 -> p_alegere34:(choice1'=1) + (1-p_alegere34):(choice1'=2);
+   [transfer13] s1 & !s2 & !s3 & !s4 & !s5 & lc1=1 & c<12 & choice1=1 -> (s1'=false) & (t1'=true);
+   [transfer14] s1 & !s2 & !s3 & !s4 & !s5 & lc1=1 & c<12 & choice1=2 -> (s1'=false) & (t1'=true);
+endmodule
+
+module S2 // intrare din Control, iesire spre Control
+   t2 : bool init false; 
+   s2 : bool init false; // false = idle, true = run
+   lc2 : [1..maxlc] init 1;
+   [idle2] !s2 & c>=12 -> true;
+   [transfercontrol2] !s2 & c>=0 & c<4 -> (s2'=true) & (lc2'=tmed21);
+   [transfercontrol2] !s2 & c>=4 & c<8 -> (s2'=true) & (lc2'=tmed22);
+   [transfercontrol2] !s2 & c>=8 & c<12 -> (s2'=true) & (lc2'=tmed23);
+   [run2] !s1 & s2 & !s3 & !s4 & !s5 & lc2>1 & c<12  -> (lc2'=lc2-1);
+   [transfer2control] !s1 & s2 & !s3 & !s4 & !s5 & lc2=1 & c<12 -> (s2'=false) & (t2'=true);
+endmodule
+
+module S3 // intrare din S1, iesire spre S5 
+   t3 : bool init false; 
+   s3 : bool init false; // false = idle, true = run
+   lc3 : [1..maxlc] init 1;
+   [idle3] !s3 & c>=12 -> true;
+   [transfer13] !s3 & c>=0 & c<4 -> (s3'=true) & (lc3'=tmed31);
+   [transfer13] !s3 & c>=4 & c<8 -> (s3'=true) & (lc3'=tmed32);
+   [transfer13] !s3 & c>=8 & c<12 -> (s3'=true) & (lc3'=tmed33);
+   [run3] !s1 & !s2 & s3 & !s4 & !s5 &  lc3>1 & c<12  -> (lc3'=lc3-1);
+   [transfer35] !s1 & !s2 & s3 & !s4 & !s5 & lc3=1 & c<12  -> (s3'=false) & (t3'=true);
+endmodule
+
+module S4 // intrare din S1, iesire spre S5 
+   t4 : bool init false; 
+   s4 : bool init false; // false = idle, true = run
+   lc4 : [1..maxlc] init 1;
+   [idle4] !s4 & c>=12 -> true;
+   [transfer14] !s4 & c>=0 & c<4 -> (s4'=true) & (lc4'=tmed41);
+   [transfer14] !s4 & c>=4 & c<8 -> (s4'=true) & (lc4'=tmed42);
+   [transfer14] !s4 & c>=8 & c<12 -> (s4'=true) & (lc4'=tmed43);
+   [run4] !s1 & !s2 & !s3 & s4 & !s5 & lc4>1 & c<12  -> (lc4'=lc4-1);
+   [transfer45] !s1 & !s2 & !s3 & s4 & !s5 & lc4=1 & c<12  -> (s4'=false) & (t4'=true);
+endmodule
+
+module S5 // intrare din S3 sau S4, iesire spre Control
+   t5 : bool init false; 
+   s5 : bool init false; // false = idle, true = run
+   lc5 : [1..maxlc] init 1;
+   [idle5] !s5 & c>=12 -> true;
+   [transfer35] !s5 & c>=0 & c<4 -> (s5'=true) & (lc5'=tmed51);
+   [transfer35] !s5 & c>=4 & c<8 -> (s5'=true) & (lc5'=tmed52);
+   [transfer35] !s5 & c>=8 & c<12 -> (s5'=true) & (lc5'=tmed53);
+   [transfer45] !s5 & c>=0 & c<4 -> (s5'=true) & (lc5'=tmed51);
+   [transfer45] !s5 & c>=4 & c<8 -> (s5'=true) & (lc5'=tmed52);
+   [transfer45] !s5 & c>=8 & c<12 -> (s5'=true) & (lc5'=tmed53);
+   [run5] !s1 & !s2 & !s3 & !s4 & s5 & lc5>1 & c<12  -> (lc5'=lc5-1);
+   [transfer5control] !s1 & !s2 & !s3 & !s4 & s5 & lc5=1 & c<12  -> (s5'=false) & (t5'=true);
+endmodule
+
+rewards "timp_consumat"
+   [transfercontrol1] true:1;
+   [transfercontrol2] true:1;
+   [transfer2control] true:1;
+   [transfer5control] true:1;
+   [run1] true:1;
+   [run2] true:1;
+   [run3] true:1;
+   [run4] true:1;
+   [run5] true:1;
+   [transfer13] true:1;
+   [transfer35] true:1;
+   [transfer14] true:1;
+   [transfer45] true:1;
+endrewards
