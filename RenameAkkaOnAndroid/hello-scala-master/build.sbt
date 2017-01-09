@@ -19,6 +19,23 @@ libraryDependencies ++=
     "org.scalatest" %% "scalatest" % "3.0.1" % "test" ::
     Nil
 
+proguardOptions ++= Seq(
+  "-keep class akka.actor.LightArrayRevolverScheduler { *; }",
+  "-keep class akka.actor.LocalActorRefProvider { *; }",
+  "-keep class akka.actor.CreatorFunctionConsumer { *; }",
+  "-keep class akka.actor.TypedCreatorFunctionConsumer { *; }",
+  "-keep class akka.dispatch.BoundedDequeBasedMessageQueueSemantics { *; }",
+  "-keep class akka.dispatch.UnboundedMessageQueueSemantics { *; }",
+  "-keep class akka.dispatch.UnboundedDequeBasedMessageQueueSemantics { *; }",
+  "-keep class akka.dispatch.DequeBasedMessageQueueSemantics { *; }",
+  "-keep class akka.actor.LocalActorRefProvider$Guardian { *; }",
+  "-keep class akka.actor.LocalActorRefProvider$SystemGuardian { *; }",
+  "-keep class akka.dispatch.UnboundedMailbox { *; }",
+  "-keep class akka.actor.DefaultSupervisorStrategy { *; }",
+  "-keep class akka.event.slf4j.Slf4jLogger { *; }",
+  "-keep class akka.event.Logging$LogExt { *; }"
+)
+	
 name := "hello-scala"
 
 // Predefined as IceCreamSandwich (4.0), nothing stops you from going below
